@@ -21,7 +21,7 @@ jobs:
 
       - name: Setup FFmpeg
         uses: federicocarboni/setup-ffmpeg@v3.1
-      
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -35,4 +35,5 @@ jobs:
       - name: Sync Content
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          TRANSISTOR_KEY: ${{ secrets.TRANSISTOR_KEY }}
         run: php artisan sync
