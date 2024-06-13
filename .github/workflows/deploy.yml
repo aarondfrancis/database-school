@@ -19,6 +19,9 @@ jobs:
       - name: Setup yt-dlp
         uses: AnimMouse/setup-yt-dlp@v1
 
+      - name: Setup FFmpeg
+        uses: federicocarboni/setup-ffmpeg@v3.1
+      
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
