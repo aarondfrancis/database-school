@@ -37,3 +37,6 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           TRANSISTOR_KEY: ${{ secrets.TRANSISTOR_KEY }}
         run: php artisan sync
+
+      - name: Job summary
+        run: echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
