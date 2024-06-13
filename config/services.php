@@ -14,6 +14,8 @@ return [
     |
     */
 
+    'transistor' => env('TRANSISTOR_KEY'),
+
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],

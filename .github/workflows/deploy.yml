@@ -1,0 +1,35 @@
+name: Publish new database school episodes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup yt-dlp
+        uses: AnimMouse/setup-yt-dlp@v1
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: bcmath, xml, tokenizer, mbstring
+          tools: composer:v2
+
+      - name: Composer Install
+        run: composer install --no-dev
+
+      - name: Sync Content
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: php artisan sync
